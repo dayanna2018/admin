@@ -1,0 +1,14 @@
+@extends('layouts.plantilla')
+
+@section('menu')
+    @parent
+    <p>Apartado 1</p>
+@endsection
+
+@section('content')
+    <p>Apartado 2</p>
+@endsection
+
+@section('otro')
+    <a href=""><p>ña</p></a>
+@endsection
