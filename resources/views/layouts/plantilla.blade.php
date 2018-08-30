@@ -25,10 +25,15 @@
 
     <div class="wrapper">
         <!-- Sidebar  -->
+
+        <!--Menu -->
         <nav id="sidebar">
             <div class="sidebar-header">
                 <h3>Bootstrap Sidebar</h3>
             </div>
+@section('menu')
+@show
+    
 
             <ul class="list-unstyled components">
                 <p>Dummy Heading</p>
@@ -36,10 +41,10 @@
                     <a href="#personasSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Recursos</a>
                     <ul class="collapse list-unstyled" id="personasSubmenu">
                         <li>
-                            <a href="#">Agregar recurso</a>
+                            <a href="{{Route('recursos')}}">Ver Recursos</a>
                         </li>
                         <li>
-                            <a href="#">Agregar habilidades</a>
+                                <a href="#">Agregar recurso</a>
                         </li>
                         <li>
                             <a href="#">Cambio de cargo</a>
@@ -87,7 +92,7 @@
 
             
         </nav>
-
+    @yield('content')
         <!-- Page Content  -->
         <div id="content">
 
@@ -105,18 +110,7 @@
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
+                 
                         </ul>
                     </div>
                 </div>

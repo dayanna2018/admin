@@ -58,3 +58,6 @@ Route::get('/master', function(){
 Route::get('menu', function(){
     return view('menu');
 });
+Route::get('/recursos', function(){
+    return view('personas')->name('recursos');
+});

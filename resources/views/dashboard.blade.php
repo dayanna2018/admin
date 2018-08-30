@@ -5,7 +5,7 @@
     <p>Apartado 1</p>
 @endsection
 
-@section('content')
+@section('')
     <p>Apartado 2</p>
 @endsection
 
