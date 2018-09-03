@@ -1,6 +1,11 @@
 @extends('layouts.plantilla')
+@extends('contenidoRecursos')
 
 @section('menu')
+    @parent
+    
+@endsection
+@section('contenido')
     @parent
     
 @endsection

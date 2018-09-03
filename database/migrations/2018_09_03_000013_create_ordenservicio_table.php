@@ -27,13 +27,12 @@ class CreateOrdenservicioTable extends Migration
             $table->timestamp('ordSer_created_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('ordSer_updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->tinyInteger('ordSerEstado')->nullable()->default('1');
-            $table->integer('cliente_cliID');
-            $table->integer('cliente_cliID1')->unsigned();
+            $table->unsignedInteger('cliente_cliID')->unsigned();
 
-            $table->index(["cliente_cliID1"], 'fk_ordenServicio_cliente1_idx');
+            $table->index(["cliente_cliID"], 'fk_ordenServicio_cliente1_idx');
 
 
-            $table->foreign('cliente_cliID1', 'fk_ordenServicio_cliente1_idx')
+            $table->foreign('cliente_cliID', 'fk_ordenServicio_cliente1_idx')
                 ->references('cliID')->on('cliente')
                 ->onDelete('no action')
                 ->onUpdate('no action');

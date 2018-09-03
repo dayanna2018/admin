@@ -23,8 +23,9 @@ class CreatePersnovedTable extends Migration
         if (Schema::hasTable($this->set_schema_table)) return;
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('Personas_PersonasID')->unsigned();
-            $table->integer('Novedades_NovId')->unsigned();
+            $table->increments('PersNovedID');
+            $table->unsignedInteger('Personas_PersonasID')->unsigned();
+            $table->unsignedInteger('Novedades_NovId')->unsigned();
             $table->date('PersNovedFechaInicio')->nullable()->default(null);
             $table->date('PersNovedFechaFin')->nullable()->default(null);
             $table->dateTime('PersNoved_created_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
@@ -41,7 +42,7 @@ class CreatePersnovedTable extends Migration
                 ->onDelete('no action')
                 ->onUpdate('no action');
 
-            $table->foreign('Personas_PersonasID', 'persnoved_Personas_PersonasID')
+            $table->foreign('Personas_PersonasID', 'fk_Personas_has_Novedades_Personas1_idx')
                 ->references('PersonasID')->on('personas')
                 ->onDelete('no action')
                 ->onUpdate('no action');

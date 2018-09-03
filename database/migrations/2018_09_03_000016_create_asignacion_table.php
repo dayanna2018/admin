@@ -28,9 +28,9 @@ class CreateAsignacionTable extends Migration
             $table->timestamp('asig_updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->timestamp('asig_created_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->tinyInteger('asigEstado')->nullable()->default('1');
-            $table->integer('ordenServicio_ordSerID')->unsigned();
+            $table->unsignedInteger('ordenServicio_ordSerID')->unsigned();
             $table->integer('ordenServicio_cliente_cliID');
-            $table->integer('personas_PersonasID')->unsigned();
+            $table->unsignedInteger('personas_PersonasID')->unsigned();
 
             $table->index(["ordenServicio_ordSerID", "ordenServicio_cliente_cliID"], 'fk_asignacion_ordenServicio1_idx');
 

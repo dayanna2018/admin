@@ -1,13 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Personas</title>
-</head>
-<body>
-    <h1>Hola {{$nombre or 'Valentin'}}</h1>
-    <h3>La hora actual es {{time()}}</h3>
-</body>
-</html>
+@extends('layouts.plantilla')
+
+@section('menu')
+    @parent
+    
+@endsection
+
+@section('')
+    <p>Apartado 2</p>
+@endsection
+
+@section('otro')
+    <a href=""><p>ña</p></a>
+@endsection

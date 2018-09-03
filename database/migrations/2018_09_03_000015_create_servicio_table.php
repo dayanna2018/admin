@@ -28,12 +28,11 @@ class CreateServicioTable extends Migration
             $table->timestamp('serv_created_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('serv_updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->tinyInteger('servEstado')->nullable()->default('1');
-            $table->integer('lineaNegocio_linNegID')->unsigned();
-            $table->integer('ordenServicio_ordSerID')->unsigned();
+            $table->unsignedInteger('lineaNegocio_linNegID')->unsigned();
+            $table->unsignedInteger('ordenServicio_ordSerID')->unsigned();
             $table->integer('ordenServicio_cliente_cliID');
-            $table->integer('ordenServicio_cliente_cliID1');
 
-            $table->index(["ordenServicio_ordSerID", "ordenServicio_cliente_cliID", "ordenServicio_cliente_cliID1"], 'fk_servicio_ordenServicio1_idx');
+            $table->index(["ordenServicio_ordSerID", "ordenServicio_cliente_cliID"], 'fk_servicio_ordenServicio1_idx');
 
             $table->index(["lineaNegocio_linNegID"], 'fk_servicio_lineaNegocio1_idx');
 

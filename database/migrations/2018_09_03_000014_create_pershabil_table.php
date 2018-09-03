@@ -23,8 +23,9 @@ class CreatePershabilTable extends Migration
         if (Schema::hasTable($this->set_schema_table)) return;
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('Personas_PersonasID')->unsigned();
-            $table->integer('Habilidadess_HabilidadesID')->unsigned();
+            $table->increments('PersHabilID');
+            $table->unsignedInteger('Personas_PersonasID')->unsigned();
+            $table->unsignedInteger('Habilidadess_HabilidadesID')->unsigned();
             $table->string('PersHabilCertificacion', 45)->nullable()->default('NO');
             $table->string('PersHabilNivExp', 45)->nullable()->default('BAJO');
             $table->dateTime('PersHabil_created_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
@@ -41,7 +42,7 @@ class CreatePershabilTable extends Migration
                 ->onDelete('no action')
                 ->onUpdate('no action');
 
-            $table->foreign('Personas_PersonasID', 'pershabil_Personas_PersonasID')
+            $table->foreign('Personas_PersonasID', 'fk_Personas_has_Herramientas_Personas_idx')
                 ->references('PersonasID')->on('personas')
                 ->onDelete('no action')
                 ->onUpdate('no action');

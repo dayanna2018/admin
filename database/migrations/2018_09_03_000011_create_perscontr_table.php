@@ -24,8 +24,8 @@ class CreatePerscontrTable extends Migration
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('PersContrID');
-            $table->integer('Personas_PersonasID')->unsigned();
-            $table->integer('Contratos_ContId')->unsigned();
+            $table->unsignedInteger('Personas_PersonasID')->unsigned();
+            $table->unsignedInteger('Contratos_ContId')->unsigned();
             $table->date('PersContrFechaInicio')->nullable()->default(null);
             $table->date('PersContrFechaFin')->nullable()->default(null);
             $table->dateTime('PersContr_created_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));

@@ -14,6 +14,9 @@ class PersonasController extends Controller
     public function index()
     {
         //
+        $recursos=\App\Persona::all();
+        
+        Return view("Recursos/MostrarRecursos",compact("$recursos")) ;
     }
 
     /**
@@ -45,7 +48,7 @@ class PersonasController extends Controller
      */
     public function show($id)
     {
-        //
+        // 
     }
 
     /**

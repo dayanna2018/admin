@@ -24,7 +24,7 @@ class CreateLineanegocioTable extends Migration
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('linNegID');
-            $table->integer('linNegNombre')->nullable()->default(null);
+            $table->string('linNegNombre', 50)->nullable()->default(null);
             $table->timestamp('linNeg_created_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('linNeg_updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->tinyInteger('linNegEstado')->nullable()->default('1');
