@@ -22,15 +22,16 @@ class CreateUsersTable extends Migration
     {
         if (Schema::hasTable($this->set_schema_table)) return;
         Schema::create($this->set_schema_table, function (Blueprint $table) {
-            $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('name', 191);
-            $table->string('email', 191);
-            $table->string('password', 191);
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->bigInteger('phone');
+            $table->bigInteger('indenty');
+            $table->string('password');
+            $table->boolean('usuRol')->default(1);
+            $table->boolean('usuEstate')->default(0);
             $table->rememberToken();
-
-            $table->unique(["email"], 'users_email_unique');
-            $table->nullableTimestamps();
+            $table->timestamps();
         });
     }
 
