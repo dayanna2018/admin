@@ -9,57 +9,32 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
-Route::get('/personas', function(){
-    
-    return view('personas', array('nombre'=> 'Javi'));
 
-});
-Route::get('/proypers', function(){
-    return view('proypers');
-});
-Route::get('/proyectos', function(){
-    return view('proyectos');
-});
-Route::get('/novedades', function(){
-    return view('novedades');
-});
-Route::get('/persnoved', function(){
-    return view('persnoved');
-});
-Route::get('/cargpers', function(){
-    return view('cargpers');
-});
-Route::get('/cargos', function(){
-    return view('cargos');
-});
-Route::get('/pershabil', function(){
-    return view('pershabil');
-});
-Route::get('/habilidades', function(){
-    return view('habilidades');
-});
-Route::get('/perscontr', function(){
-    return view('perscontr');
-});
-Route::get('/contratos', function(){
-    return view('contratos');
-});
-Route::get('/master', function(){
-    return view('master');
-});
-Route::get('menu', function(){
-    return view('menu');
-});
+// Authentication Routes...
+$this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
+$this->post('login', 'Auth\LoginController@login');
+$this->post('logout', 'Auth\LoginController@logout')->name('logout');
+
+// Registration Routes...
+$this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+$this->post('register', 'Auth\RegisterController@register');
+
+// Password Reset Routes...
+$this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+$this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+$this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+$this->post('password/reset', 'Auth\ResetPasswordController@reset');
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::group(['prefix' => 'dashboard'], function(){
-    Route::get('/recursos','PersonasController@index');
-});
+Route::get('/admin', 'AdminController@index')->name('admin');
+Route::get('/deleteUser/{id}', 'AdminController@deleteUser')->where('id', '[0-9]+')->name('deleteUser');
+Route::post('/showUser', 'AdminController@showUser')->where('id', '[0-9]+')->name('showUser');
+Route::post('/registerAdmin', 'AdminController@register')->name('registerAdmin');
+Route::post('/updateUser', 'AdminController@updateUser')->name('updateUser');

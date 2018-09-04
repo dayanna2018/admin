@@ -1,0 +1,138 @@
+/*----HEADER----*/
+
+.headerPage {
+    color: #b3b3b3;
+    padding: 0;
+}
+
+.list-group-item {
+    background: unset
+}
+
+/*----MAIN----*/
+
+.mainPage {
+    background-image: url(../img/textura-puntos.png);
+    background:url(../img/textura-puntos.png), rgba(219, 219, 219, 1);
+    background:url(../img/textura-puntos.png), -moz-linear-gradient(45deg, rgba(219, 219, 219, 1) 0%, rgba(255, 255, 255, 1) 36%, rgba(255, 255, 255, 1) 58%, rgba(227, 224, 227, 1) 100%);
+    background:url(../img/textura-puntos.png), -webkit-gradient(left bottom, right top, color-stop(0%, rgba(219, 219, 219, 1)), color-stop(36%, rgba(255, 255, 255, 1)), color-stop(58%, rgba(255, 255, 255, 1)), color-stop(100%, rgba(227, 224, 227, 1)));
+    background:url(../img/textura-puntos.png), -webkit-linear-gradient(45deg, rgba(219, 219, 219, 1) 0%, rgba(255, 255, 255, 1) 36%, rgba(255, 255, 255, 1) 58%, rgba(227, 224, 227, 1) 100%);
+    background:url(../img/textura-puntos.png), -o-linear-gradient(45deg, rgba(219, 219, 219, 1) 0%, rgba(255, 255, 255, 1) 36%, rgba(255, 255, 255, 1) 58%, rgba(227, 224, 227, 1) 100%);
+    background:url(../img/textura-puntos.png), -ms-linear-gradient(45deg, rgba(219, 219, 219, 1) 0%, rgba(255, 255, 255, 1) 36%, rgba(255, 255, 255, 1) 58%, rgba(227, 224, 227, 1) 100%);
+    background:url(../img/textura-puntos.png), linear-gradient(45deg, rgba(219, 219, 219, 1) 0%, rgba(255, 255, 255, 1) 36%, rgba(255, 255, 255, 1) 58%, rgba(227, 224, 227, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dbdbdb', endColorstr='#e3e0e3', GradientType=1);
+}
+
+/*----STYLES GENERALS----*/
+
+.gris {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 1px 20px 0px #888888;
+    border-radius: 0.5em;
+}
+
+/*----FOOTER----*/
+
+.footerPage {
+    background-image: url(../img/textura-footer.png);
+    box-shadow: -1px 5px 20px 5px #888888;
+    color: #fff;
+}
+
+/*------------END------------*/
+.btn-primary.focus, .btn-primary:focus,.btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show>.btn-primary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgb(97, 194, 157);
+}
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main {
+    flex: 1;
+}
+
+.h-100 {
+    height: 100%;
+}
+.h-80 {
+    height: 80%;
+}
+.error{
+    color: rgb(207, 48, 48);
+}
+.navbar-light .navbar-nav .nav-link,
+.navbar-light .navbar-nav .nav-link {
+    font-weight: bold;
+}
+
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-link:hover {
+    background: rgba(135, 210, 117, 0.87);
+    color: #ffffff;
+    transition-duration: 0.6s, 0.6s, 0.6s, 0.6s, 0.6s, 0.6s;
+    border-radius: 1em;
+    opacity: 0.8;
+    color: rgb(0, 0, 0);
+}
+
+.btn-primary,
+.btn-secondary {
+    color: #fff;
+    background-color: #489f9e;
+    border-color: #299f98;
+}
+
+.btn-secondary:hover,
+.btn-secondary:not(:disabled):not(.disabled).active,
+.btn-secondary:not(:disabled):not(.disabled):active,
+.show>.btn-secondary.dropdown-toggle,
+.btn-primary:hover,
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show>.btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #3f8b8a;
+    border-color: #21706b;
+}
+
+.carousel-caption {
+    border-radius: 1em;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.carousel-control-next {
+    box-shadow: inset -66px 0px 89px 20px #000000;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    background-color: #e0e0e0;
+}
+
+.btn-secondary:hover, .btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle, .btn-primary:hover, .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #2d3737;
+    border-color: #21706b;
+}
+
+.carousel-control-prev {
+    box-shadow: inset 66px 0px 89px 20px #000000;
+}
+
+.list-group-item {
+    border-top: 0;
+}
+
+@media (max-width: 768px) {
+    .imageHead,
+    #carouselExampleCaptions {
+        display: none !important;
+    }
+    .titleProyect {
+        text-align: center;
+    }
+}
+.errors{
+    color: #d82d2d
+}
