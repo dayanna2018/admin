@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+ 
 // Authentication Routes...
 $this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
 $this->post('login', 'Auth\LoginController@login');
@@ -38,3 +38,7 @@ Route::get('/deleteUser/{id}', 'AdminController@deleteUser')->where('id', '[0-9]
 Route::post('/showUser', 'AdminController@showUser')->where('id', '[0-9]+')->name('showUser');
 Route::post('/registerAdmin', 'AdminController@register')->name('registerAdmin');
 Route::post('/updateUser', 'AdminController@updateUser')->name('updateUser');
+
+Route::get('/admin/recursos', 'AdminController@showUser')->name('mostrarRecursosActivos');
+
+

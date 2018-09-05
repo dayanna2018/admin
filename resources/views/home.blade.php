@@ -1,4 +1,4 @@
-@extends('layouts.sipsa')
+@extends('layouts.menu')
 
 @section('main')
     <div class="container mt-5 p-5">

@@ -55,7 +55,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <ul class="list-group">
+                                                 <ul class="list-group">
                                                     <li id="oro" class="list-group-item d-flex justify-content-between align-items-center hide ">
                                                         Oro
                                                         <span id="oroC" class="badge badge-primary badge-pill">1 g</span>

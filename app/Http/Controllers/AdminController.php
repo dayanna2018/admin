@@ -21,20 +21,24 @@ class AdminController extends Controller
     {
         $where = [['PersonasID', '!=', Auth::id()], ['PersonasTipoDoc', '!=', 1]];
         $users = DB::table('personas')->paginate(10);
-        return view('admin.dashboard', ['users' => $users]);
+        return view('home', ['users' => $users]);
     }
     public function showUser(Request $user)
     {
-        $where = [['PersonasID', '=', $user->input('userId')], ['PersonasTipoDoc', '!=', 1]];
-        $users = DB::table('personas')->select(
+
+        
+        $recursos = DB::table('personas')->where->get();
+     /*   $where = [['PersonasID', '=', $user->input('userId')], ['PersonasTipoDoc', '!=', 1]];
         'PersonasNombreCompleto AS 0',
         'PersonasTel AS 1',
-        'PersonasTitulo AS 2',
+        'PersonasTitulo AS 2', 
         'PersonasEspecialidad AS 3',
         'PersonasDocumento AS 4',
         'PersonasTipoDoc AS 5'
         )->where($where)->get();
-        return $users;
+        */
+        //return $recursos;
+        return view('home', ['recursos' => $recursos]);
     }
     public function register(Request $request)
     {
