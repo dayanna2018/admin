@@ -46,10 +46,10 @@
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Recursos</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="{{Route('mostrarRecursosActivos')}}">Ver recursos</a>
+                            <a href="{{Route('mostrarRecursosActivos')}}">Activos</a>
                         </li>
                         <li>
-                            <a href="#">Ver retiros</a>
+                            <a href="{{Route('mostrarRecursosInactivos')}}">Retirados</a>
                         </li>
 
                     </ul>
@@ -58,7 +58,7 @@
                     <a href="#habilidadesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Habilidades</a>
                     <ul class="collapse list-unstyled" id="habilidadesSubmenu">
                         <li>
-                            <a href="#">Ver habilidades</a>
+                        <a href="{{Route('mostrarHabilidades')}}">Ver habilidades</a>
                         </li>
                         <li>
                             <a href="#">Agregar habilidades</a>
@@ -80,10 +80,20 @@
                     <a href="#cargosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Cargos</a>
                     <ul class="collapse list-unstyled" id="cargosSubmenu">
                         <li>
-                            <a href="#">Ver Cargos</a>
+                            <a href="{{Route('mostrarCargos')}}">Ver Cargos</a>
                         </li>
                         <li>
                             <a href="#">Agregar Cargo</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#clientesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Clientes</a>                    <ul class="collapse list-unstyled" id="clientesSubmenu">
+                        <li>
+                            <a href="#">Ver Clientes</a>
+                        </li>
+                        <li>
+                            <a href="#">Agregar Clientes</a>
                         </li>
                     </ul>
                 </li>
@@ -128,10 +138,13 @@
                 </div>
             </nav>
 
-                  @if (Request::is('admin/recursos'))
-                        @include('contenido.mostrarRecursos')
-
-                    @endif
+                @if (Request::is('admin/recursos'))
+                    @include('contenido.mostrarRecursos')
+                @elseif(Request::is('admin/recursosInac'))
+                    @include('contenido.mostrarRecursosInac')
+                @else
+                    @include('contenido.principal')
+                @endif
            </div>
     </div>
 

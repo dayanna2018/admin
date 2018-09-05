@@ -25,10 +25,14 @@ class AdminController extends Controller
     }
     public function showUser(Request $user)
     {
-
         
-        $recursos = DB::table('personas')->where->get();
-     /*   $where = [['PersonasID', '=', $user->input('userId')], ['PersonasTipoDoc', '!=', 1]];
+        
+        $users = DB::table('personas')
+        ->leftjoin('cargpers','personas.PersonasID','=','cargpers.Personas_PersonasID')
+        ->leftjoin('cargos','CargosID', '=', 'Cargos_CargosID')
+        ->where('PersonasActivo', '=', 'ACTIVO')->get();
+        return view('home', ['users' => $users]);
+        /*   $where = [['PersonasID', '=', $user->input('userId')], ['PersonasTipoDoc', '!=', 1]];
         'PersonasNombreCompleto AS 0',
         'PersonasTel AS 1',
         'PersonasTitulo AS 2', 
@@ -36,9 +40,16 @@ class AdminController extends Controller
         'PersonasDocumento AS 4',
         'PersonasTipoDoc AS 5'
         )->where($where)->get();
-        */
-        //return $recursos;
-        return view('home', ['recursos' => $recursos]);
+        return $users; 
+        return $users;*/
+    }
+    public function showUserInac(Request $user)
+    {
+        
+        
+        $users = DB::table('personas')->where('PersonasActivo', '=', 'INACTIVO')->get();
+
+        return view('home', ['users' => $users]);
     }
     public function register(Request $request)
     {

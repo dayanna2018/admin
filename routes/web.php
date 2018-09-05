@@ -40,5 +40,6 @@ Route::post('/registerAdmin', 'AdminController@register')->name('registerAdmin')
 Route::post('/updateUser', 'AdminController@updateUser')->name('updateUser');
 
 Route::get('/admin/recursos', 'AdminController@showUser')->name('mostrarRecursosActivos');
-
-
+Route::get('/admin/recursosInac', 'AdminController@showUserInac')->name('mostrarRecursosInactivos');
+Route::get('/admin/habilidades','HabilidadesController@show')->name('mostrarHabilidades');
+Route::get('/admin/cargos','CargosController@show')->name('mostrarCargos');

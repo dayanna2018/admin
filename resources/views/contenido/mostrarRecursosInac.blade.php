@@ -20,8 +20,9 @@
                                 <th scope="col">TELEFONO</th>
                                 <th scope="col">TITULO</th>
                                 <th scope="col">DOCUMENTO</th>
-                                <th scope="col">CARGO</th>
+                                <th scope="col">TIPO</th>
                                 <th scope="col">INGRESO</th>
+                                <th scope="col">RETIRO</th>
                                 <th scope="col"> </th>
                                 <th scope="col"></th>
                             </tr>
@@ -29,19 +30,18 @@
                         <tbody>
                             @foreach ($users as $user)
                             <tr>
-                                <td style="font-size: 12px">{{ $user->PersonasNombreCompleto }} </td>
-                                <td style="font-size: 12px">{{ $user->PersonasTel }} </td>
-                                <td style="font-size: 12px">{{ $user->PersonasTitulo }} </td>
-                                <td style="font-size: 12px">{{ $user->PersonasDocumento }} </td>
-                                <td style="font-size: 12px">{{ $user->CargosNombre }} </td>
-                                <td style="font-size: 12px">{{ $user->PersonasFechaIngreso }} </td>
-                                <td style="font-size: 12px">
+                                <td style="font-size: 13px">{{ $user->PersonasNombreCompleto }} </td>
+                                <td style="font-size: 13px">{{ $user->PersonasTel }} </td>
+                                <td style="font-size: 13px">{{ $user->PersonasTitulo }} </td>
+                                <td style="font-size: 13px">{{ $user->PersonasDocumento }} </td>
+                                <td style="font-size: 13px">{{ $user->PersonasTipoDoc }} </td>
+                                <td style="font-size: 13px">{{ $user->PersonasFechaIngreso }} </td>
+                                <td style="font-size: 13px">{{ $user->PersonasFechaRetiro }} </td>
+                                <td style="font-size: 13px">
                                     <div class="btn btn-sm btn-primary" userIdUpdate="{{ $user->PersonasID }}"><i class="far fa-edit"></i>
                                         Actualizar</div>
                                 </td>
-                                <td style="font-size: 12px">
-                                    <div class="btn btn-sm btn-danger" userIdDelete="{{ $user->PersonasID }}">Retiro</div>
-                                </td>
+
                             </tr>
                             @endforeach
                         </tbody>
