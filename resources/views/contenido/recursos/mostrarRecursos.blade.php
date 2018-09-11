@@ -1,51 +1,92 @@
 <div class="navbar navbar-expand-lg navbar-white bg-white m-2 p-2">
     <main>
-        <div class="container card my-5">
-
+        <div class="container ">
+          <!--  <canvas id="myChart" width="400" height="400"></canvas>-->
+            <script>
+                $.ajax({
+                type: "post",
+                url: './updateUser',
+                dataType: "json",
+                data: {
+                    name: $('#nameUpdate').val(),
+                    phone: $('#numberUpdate').val(),
+                    PersonasEspecialidad: $('#PersonasEspecialidadUpdate').val(),
+                    PersonasTitulo: $('#PersonasTituloUpdate').val(),
+                    indenty: $('#documentUpdate').val(),
+                    PersonasTipoDoc: $('#PersonasTipoDocUpdate').val(),
+                    id: $('#idUser').val(),
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function (datos) {
+                    $('.errors').html('');
+                    if (typeof datos.errors !== 'undefined') {
+                        errorsUpdate(datos.errors);
+                    }
+                    if (typeof datos.success !== 'undefined') {
+                        $('.update').modal('hide')
+                        location.reload();
+                    }
+                },
+                error: function (datos) {
+                    errors(datos.responseJSON.errors);
+                }
+            })
+            </script>
+         
          
 
 
-<!-- ESTE ES EL BOTON QUE SE VE BIEN PERRO
-
-                <button id="add__new__list" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"><i
-                        class="fas fa-plus"></i> Agregar usuario</button>
--->
-
-                        <br>
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">NOMBRE</th>
-                                <th scope="col">TELEFONO</th>
-                                <th scope="col">TITULO</th>
-                                <th scope="col">DOCUMENTO</th>
-                                <th scope="col">CARGO</th>
-                                <th scope="col">INGRESO</th>
-                                <th scope="col"> </th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($users as $user)
-                            <tr>
-                                <td style="font-size: 12px">{{ $user->PersonasNombreCompleto }} </td>
+    <!--
+    <button id="add__new__list" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"><i
+        class="fas fa-plus"></i> Agregar usuario</button><br>-->
+        
+        
+        <br>
+        <div class="row">
+            <div class="col-6">
+                {{ $users->links() }}
+            </div>
+            <div class="col-6 d-flex justify-content-end pb-3">
+                <a class="btn btn-info"href="{{Route('addRecurso')}}" >Agregar recurso</a><br>
+            </div>
+        </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">NOMBRE</th>
+                    <th scope="col">TELEFONO</th>
+                    <th scope="col">TITULO</th>
+                    <th scope="col">DOCUMENTO</th>
+                    <th scope="col">CARGO</th>
+                    <th scope="col">INGRESO</th>
+                    <th scope="col"> </th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($users as $user)
+                <tr>
+                    <td style="font-size: 12px">{{ $user->PersonasNombreCompleto }} </td>
                                 <td style="font-size: 12px">{{ $user->PersonasTel }} </td>
                                 <td style="font-size: 12px">{{ $user->PersonasTitulo }} </td>
                                 <td style="font-size: 12px">{{ $user->PersonasDocumento }} </td>
                                 <td style="font-size: 12px">{{ $user->CargosNombre }} </td>
                                 <td style="font-size: 12px">{{ $user->PersonasFechaIngreso }} </td>
                                 <td style="font-size: 12px">
-                                    <div class="btn btn-sm btn-primary" userIdUpdate="{{ $user->PersonasID }}"><i class="far fa-edit"></i>
-                                        Actualizar</div>
-                                </td>
-                                <td style="font-size: 12px">
-                                    <div class="btn btn-sm btn-danger" userIdDelete="{{ $user->PersonasID }}">Retiro</div>
-                                </td>
-                            </tr>
+                                        <div class="btn btn-sm btn-info" userIdUpdate="{{ $user->PersonasID }}"><i class="far fa-edit"></i>
+                                            Actualizar</div>
+                                        </td>
+                                        <td style="font-size: 12px">
+                                                <div class="btn btn-sm btn-danger" userIdDelete="{{ $user->PersonasID }}">Retiro</div>
+                                            </td>
+                                        </tr>
                             @endforeach
                         </tbody>
                     </table>
+                    {{ $users->links() }}
                 </div>
                 
             </div>
@@ -81,58 +122,58 @@
                                 <div class="form-group row">
                                     <label for="document" class="col-md-4 col-form-label text-md-right">Numero Documento
                                         de identidad</label>
-                                    <div class="col-md-6">
-                                        <input id="document" type="number" class="form-control" required>
+                                        <div class="col-md-6">
+                                            <input id="document" type="number" class="form-control" required>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-4 col-form-label text-md-right">Tipo de documento</label>
-                                    <div class="col-md-6">
-                                        <select class="form-control" id="PersonasTipoDoc">
-                                            <option value="CC">C.C</option>
-                                            <option value="TI">T.I</option>
-                                        </select>
+                                    <div class="form-group row">
+                                        <label class="col-md-4 col-form-label text-md-right">Tipo de documento</label>
+                                        <div class="col-md-6">
+                                            <select class="form-control" id="PersonasTipoDoc">
+                                                <option value="CC">C.C</option>
+                                                <option value="TI">T.I</option>
+                                            </select>
+                                        </div>
                                     </div>
+                                    <div class="form-group row">
+                                        <label for="PersonasTitulo" class="col-md-4 col-form-label text-md-right">Titulo de la
+                                            personas</label>
+                                            <div class="col-md-6">
+                                                <input id="PersonasTitulo" type="text" class="form-control" required>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" id="idUser">
+                                        <div class="form-group row mb-0">
+                                            <div class="col-md-6 offset-md-4">
+                                                <button type="submit" class="btn btn-primary">
+                                                    {{ __('Register') }}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="PersonasTitulo" class="col-md-4 col-form-label text-md-right">Titulo de la
-                                        personas</label>
-                                    <div class="col-md-6">
-                                        <input id="PersonasTitulo" type="text" class="form-control" required>
-                                    </div>
-                                </div>
-                                <input type="hidden" id="idUser">
-                                <div class="form-group row mb-0">
-                                    <div class="col-md-6 offset-md-4">
-                                        <button type="submit" class="btn btn-primary">
-                                            {{ __('Register') }}
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="modal fade update" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="card-body text-center">
-                            <h4 class="card-title">Actualizar persona</h4>
-                            <p class="card-text">Complete todo los campos por favor.</p>
-                        </div>
-                        <div class="card 2 p-3 mx-4 mb-3">
-                            <form id="update">
-                                <div class="form-group row">
-                                    <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-                                    <div class="col-md-6">
-                                        <input id="nameUpdate" type="text" class="form-control" required autofocus>
-                                    </div>
+                    <div class="modal fade update" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title">Actualizar persona</h4>
+                                    <p class="card-text">Complete todo los campos por favor.</p>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="number" class="col-md-4 col-form-label text-md-right">Numero de telefono</label>
-                                    <div class="col-md-6">
-                                        <input id="numberUpdate" type="number" class="form-control" required>
+                                <div class="card 2 p-3 mx-4 mb-3">
+                                    <form id="update">
+                                        <div class="form-group row">
+                                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                                            <div class="col-md-6">
+                                                <input id="nameUpdate" type="text" class="form-control" required autofocus>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="number" class="col-md-4 col-form-label text-md-right">Numero de telefono</label>
+                                            <div class="col-md-6">
+                                                <input id="numberUpdate" type="number" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -153,14 +194,14 @@
                                 <div class="form-group row">
                                     <label for="document" class="col-md-4 col-form-label text-md-right">Numero Documento
                                         de identidad</label>
-                                    <div class="col-md-6">
-                                        <input id="documentUpdate" type="number" class="form-control" required>
+                                        <div class="col-md-6">
+                                            <input id="documentUpdate" type="number" class="form-control" required>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-4 col-form-label text-md-right">Tipo de documento</label>
-                                    <div class="col-md-6">
-                                        <select class="form-control" id="PersonasTipoDocUpdate">
+                                    <div class="form-group row">
+                                        <label class="col-md-4 col-form-label text-md-right">Tipo de documento</label>
+                                        <div class="col-md-6">
+                                            <select class="form-control" id="PersonasTipoDocUpdate">
                                             <option value="CC">C.C</option>
                                             <option value="TI">T.I</option>
                                         </select>
@@ -199,6 +240,63 @@
         </div>
     </div>
     <script>
+        $.ajax({
+            type: "post",
+            url: './ajax',
+            dataType: "json",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function (datos) {
+                var ctx = document.getElementById("myChart").getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                        datasets: [{
+                            label: '# of Votes',
+                            data: [
+                                datos.count, 
+                                datos.count-23, 
+                                3, 
+                                5, 
+                                2, 
+                                3],
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255,99,132,1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero:true
+                                }
+                            }]
+                        }
+                    }
+                });
+                console.log(datos.count);
+            },
+            error: function (datos) {
+                console.log(datos);
+            }
+        })
         function errors(r) {
             $('.errors').remove()
             if (typeof r.name !== 'undefined') {
@@ -245,12 +343,12 @@
             var userID = this.attributes[1].value;
             swal({
                 html: '<div class="container"><div class="m-3">Seleccione una opcion</div>' +
-                    '<div class="row">' +
+                '<div class="row">' +
                     '<div class="col-md-6 col-sm-12">' +
-                    '<div class="btn btn-info form-control btnActualizar">Actualizar informacion</div>' +
-                    '</div>' +
-                    '</div>'
-            })
+                        '<div class="btn btn-primary form-control btnActualizar">Actualizar informacion</div>' +
+                        '</div>' +
+                        '</div>'
+                    })
             $('.btnActualizar').on('click', function (e) {
                 var timerInterval
                 swal({
@@ -390,5 +488,5 @@
                 }
             })
         });
-    </script>
+        </script>
 </div>

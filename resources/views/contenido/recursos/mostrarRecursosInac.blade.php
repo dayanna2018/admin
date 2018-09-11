@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-lg navbar-white bg-white m-2 p-2">
     <main>
-        <div class="container card my-5">
+        <div class="container my-5">
 
          
 

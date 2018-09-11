@@ -51,7 +51,7 @@ class HabilidadesController extends Controller
     {
         //
         $users = DB::table('habilidades')->get();
-        return $users;
+        return view('home', ['users'=>$users]);
 
 
 

@@ -1,0 +1,25 @@
+.pagination > li > a,
+.pagination > li > span {
+    color: rgb(23, 162, 184); 
+}
+
+.pagination > .active > a,
+.pagination > .active > a:focus,
+.pagination > .active > a:hover,
+.pagination > .active > span,
+.pagination > .active > span:focus,
+.pagination > .active > span:hover {
+    background-color: rgb(21, 144, 163);
+    border-color: rgb(23, 162, 184);
+}
+
+
+
+.pagination > .page-item.active{
+    background-color: rgb(21, 144, 163);
+    
+}
+.pagination > .page-link{
+    background-color: rgb(21, 144, 163);
+    
+}

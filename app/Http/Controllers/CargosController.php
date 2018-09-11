@@ -52,6 +52,11 @@ class CargosController extends Controller
         $users = DB::table('cargos')->get();
         return $users;
     }
+    public function showPersAct(Request $user)
+    {
+        $users = DB::table('cargos')->get();
+        return dd($users);
+    }
 
     /**
      * Show the form for editing the specified resource.

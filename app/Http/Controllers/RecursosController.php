@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
-class AdminController extends Controller
+class RecursosController extends Controller
 {
 
     protected $fillable = ['PersonasID'];
@@ -25,23 +25,24 @@ class AdminController extends Controller
     }
     public function showUser(Request $user)
     {
-        
+         
         
         $users = DB::table('personas')
         ->leftjoin('cargpers','personas.PersonasID','=','cargpers.Personas_PersonasID')
         ->leftjoin('cargos','CargosID', '=', 'Cargos_CargosID')
+        ->where('PersonasActivo', '=', 'ACTIVO')->paginate(50);
+        
+        return view('home', ['users' => $users, 'contPers' =>$users->count()]);
+
+    }
+    public function showUserAjax(Request $user)
+    {
+        $users = DB::table('personas')
+        ->leftjoin('cargpers','personas.PersonasID','=','cargpers.Personas_PersonasID')
+        ->leftjoin('cargos','CargosID', '=', 'Cargos_CargosID')
         ->where('PersonasActivo', '=', 'ACTIVO')->get();
-        return view('home', ['users' => $users]);
-        /*   $where = [['PersonasID', '=', $user->input('userId')], ['PersonasTipoDoc', '!=', 1]];
-        'PersonasNombreCompleto AS 0',
-        'PersonasTel AS 1',
-        'PersonasTitulo AS 2', 
-        'PersonasEspecialidad AS 3',
-        'PersonasDocumento AS 4',
-        'PersonasTipoDoc AS 5'
-        )->where($where)->get();
-        return $users; 
-        return $users;*/
+        return ['count' =>$users->count()];
+
     }
     public function showUserInac(Request $user)
     {
@@ -90,7 +91,9 @@ class AdminController extends Controller
             'PersonasTitulo.unique' => 'El documento de identidad ya está en uso.',
         ]);
     }
-
+    public function addResource(){
+        return view('home');    
+    }
     protected function validatorUpdate(array $data)
     {
         return Validator::make($data, [
@@ -101,6 +104,9 @@ class AdminController extends Controller
             'PersonasTipoDoc' => 'required',
             'PersonasEspecialidad' => 'required|string|min:6'
         ]);
+    }
+    public function addingResource(){
+        return 'Created!';
     }
 
     /**

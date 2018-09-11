@@ -12,14 +12,17 @@
     <script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/funciones.js') }}" type="text/javascript"></script>
     <link href="{{ asset('css/estilo.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/pagination.css') }}" rel="stylesheet" type="text/css" />
     <script src="{{ asset('js/sweetalert2.all.min.js') }}" type="text/javascript"></script>
+<script src="{{asset('js/Chart.bundle.min.js')}}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
     <title>Admin Assist</title>
 
     <!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    
     <!-- Our Custom CSS -->
 <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" />
     <!-- Scrollbar Custom CSS -->
@@ -37,7 +40,7 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-               <a href="{{Route('admin')}}"><h3>Admin</h3></a>
+                    <a href="{{Route('admin')}}"><h3>Admin</h3></a>
             </div>
 
             <ul class="list-unstyled components">
@@ -50,6 +53,9 @@
                         </li>
                         <li>
                             <a href="{{Route('mostrarRecursosInactivos')}}">Retirados</a>
+                        </li>
+                        <li>
+                            <a href="{{Route('addRecurso')}}">Agregar Recurso</a>
                         </li>
 
                     </ul>
@@ -139,9 +145,14 @@
             </nav>
 
                 @if (Request::is('admin/recursos'))
-                    @include('contenido.mostrarRecursos')
+                    @include('contenido.recursos.mostrarRecursos')
                 @elseif(Request::is('admin/recursosInac'))
-                    @include('contenido.mostrarRecursosInac')
+                    @include('contenido.recursos.mostrarRecursosInac')
+                @elseif(Request::is('admin/habilidades'))
+                    @include('contenido.mostrarHabilidades')
+                @elseif(Request::is('recursos/agregar'))
+                    @include('contenido.recursos.insertarRecursos')
+
                 @else
                     @include('contenido.principal')
                 @endif
@@ -178,6 +189,7 @@
             $(this).dropdown('hide') */
         });
     </script> 
+ 
     @if (Request::is('admin') || Request::is('admin/*'))
         <script>
             $('#dashboardNav').addClass('active')
