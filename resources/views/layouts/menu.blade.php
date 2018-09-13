@@ -124,9 +124,9 @@
         <div id="content" class="bg-light">
             <nav class="navbar navbar-expand-lg navbar-white bg-white m-2 p-2">
                 <div class="container-fluid">
-                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info ml-3">
                         <i class="fas fa-align-left"></i>
-                        <span>Mostrar / Ocultar</span>
+                        <span></span>
                     </button>
                     <!-- AQUÍ VA EL CONTENIDO DE LA PAGINA, CAMBIA DEPENDIENDO DEL REQUEST(LA VALIDACIÓN SE REALIZA A PARTIR DE LA URL)-->                    
                     <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -152,6 +152,8 @@
                     @include('contenido.mostrarHabilidades')
                 @elseif(Request::is('recursos/agregar'))
                     @include('contenido.recursos.insertarRecursos')
+                @elseif(Request::is('recursos/showResource/*'))
+                    @include('contenido.recursos.mostrarPersona');
 
                 @else
                     @include('contenido.principal')

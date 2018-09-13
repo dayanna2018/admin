@@ -17,3 +17,13 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
 
+//$professions = DB::select('SELECT id FROM profesiones WHERE title= ? LIMIT 0,1', ["Desarrollador Backend"]);
+
+$profesion = DB::table('professions')->select('id')->first();
+
+DB::table('users')->insert([
+    'name' => 'Nombre 1',
+    'email' => 'correo@correo.com',
+    'password' => bcrypt('laravel'),
+    'profession_id' => $profession->first()->id
+]);

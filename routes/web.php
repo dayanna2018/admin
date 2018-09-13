@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Http\Request as Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,4 +46,5 @@ Route::get('/admin/habilidades','HabilidadesController@show')->name('mostrarHabi
 Route::get('/admin/cargos','CargosController@show')->name('mostrarCargos');
 Route::get('/recursos/agregar','RecursosController@addResource')->name('addRecurso');
 Route::post('/recursos/agregar/new','RecursosController@addingResource')->name('addingRecurso');
+Route::get('/recursos/showResource/{PersonasID}','RecursosController@showResource')->name('showResourceController');
 

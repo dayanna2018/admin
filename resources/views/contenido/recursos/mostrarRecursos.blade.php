@@ -1,6 +1,31 @@
+
+<div class="navbar navbar-expand-lg navbar-white bg-white m-2 p-2 ">
+    <form action="">
+        <div class="row ">
+            <div class="col-6">
+                <div class="input-group">
+                    <div class="input-group-prepend ">
+                        <div class="input-group-text " id="btnGroupAddon">Recurso</div>
+                    </div>
+                    <input type="text" class="form-control" placeholder="" aria-label="Input group example" aria-describedby="btnGroupAddon">
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="" aria-label="Input group example" aria-describedby="btnGroupAddon">
+                        <div class="input-group-prepend">
+                        <div class="input-group-text rounded-right" id="btnGroupAddon">Habilidad </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>    
+</div>
+                
 <div class="navbar navbar-expand-lg navbar-white bg-white m-2 p-2">
+        
     <main>
-        <div class="container ">
+        <div class="">
           <!--  <canvas id="myChart" width="400" height="400"></canvas>-->
             <script>
                 $.ajax({
@@ -45,10 +70,10 @@
         
         <br>
         <div class="row">
-            <div class="col-6">
+            <div class="col-5">
                 {{ $users->links() }}
             </div>
-            <div class="col-6 d-flex justify-content-end pb-3">
+            <div class="col-6 d-flex justify-content-end pb-3 ml-4">
                 <a class="btn btn-info"href="{{Route('addRecurso')}}" >Agregar recurso</a><br>
             </div>
         </div>
@@ -67,10 +92,12 @@
                 </tr>
             </thead>
             <tbody>
+
                 @foreach ($users as $user)
                 <tr>
-                    <td style="font-size: 12px">{{ $user->PersonasNombreCompleto }} </td>
-                                <td style="font-size: 12px">{{ $user->PersonasTel }} </td>
+                        
+                <td style="font-size: 12px"><a href="{{url("/recursos/showResource/{$user->PersonasID}")}}"> {{$user->PersonasNombreCompleto}} </a></td>
+                                <td style="font-size: 12px">{{ $user->PersonasTel }}</td>
                                 <td style="font-size: 12px">{{ $user->PersonasTitulo }} </td>
                                 <td style="font-size: 12px">{{ $user->PersonasDocumento }} </td>
                                 <td style="font-size: 12px">{{ $user->CargosNombre }} </td>

@@ -35,6 +35,21 @@ class RecursosController extends Controller
         return view('home', ['users' => $users, 'contPers' =>$users->count()]);
 
     }
+    public function showResource(int $PersonasID){
+        $users = DB::table('habilidades')
+        ->leftjoin('pershabil','pershabil.Habilidadess_HabilidadesID', '=', 'habilidades.HabilidadesID')
+        ->leftjoin('personas','pershabil.Personas_PersonasID', '=', 'personas.PersonasID')
+        ->leftjoin('cargpers','personas.PersonasID','=','cargpers.Personas_PersonasID')
+        ->leftjoin('cargos','CargosID', '=', 'Cargos_CargosID')
+        ->where('PersonasID', '=', $PersonasID)->get();
+
+        
+        
+        return view('home',['users' => $users, 'PersonasID' =>$PersonasID]);
+    }
+
+
+//    mostrarPersona
     public function showUserAjax(Request $user)
     {
         $users = DB::table('personas')
