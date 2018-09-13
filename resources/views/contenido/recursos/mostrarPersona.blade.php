@@ -21,7 +21,7 @@
                                     <div class="navbar navbar-expand-lg navbar-white bg-white  ml-2 mr-2 rounded" >
                                                 <table class="table table-borderless table-hover table-striped table-earning rounded">
                                                     <thead class="thead">
-                                                        <tr>
+                                                        <tr> 
                                                             <th scope="col">NOMBRE</th>
                                                             <th scope="col">NIVEL</th>
                                                             <th scope="col">CERTIFICACIÓN</th>
