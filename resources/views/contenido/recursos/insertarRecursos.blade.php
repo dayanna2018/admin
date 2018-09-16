@@ -1,67 +1,60 @@
+{!!Form::open(['action' => 'RecursosController@addingResource'])!!}
+<!--
 <form action="/recursos/agregar/new" class="" method="post">
-
+-->
     <div class="navbar navbar-expand-lg navbar-white bg-white m-2 p-4 d-flex justify-content-center">
-
-  
-        
             <div class="row">
-                
                 <div class="col-6">
-                    <label class="text-dark" for="PersonasPriApellido" >Primer apellido</label>
-                    <input class="form-control" type="text" id="PersonasPriApellido" name="PersonasPriApellido">
-                    <label class="text-dark" for="">Segundo apellido</label>
-                    <input class="form-control" type="text"  name="PersonasSegApellido">
+                    {!!Form::label('PersonasPriApellido','Primer apellido')!!}
+                    {!!Form::text('PersonasPriApellido',null, ['class'=>'form-control'])!!}
+                    {!!Form::label('PersonasSegApellido', 'Segundo apellido')!!}
+                    {!!Form::text('PersonasSegApellido',null,['class'=>'form-control'])!!}
                 </div>
                 <div class="col-6">
-                    <label class="text-dark" for="">Primer nombre</label>
-                    <input class="form-control" type="text" name=PersonasPrimNombre"">
-                    <label class="text-dark" for="">Segundo nombre</label>
-                    <input class="form-control" type="text"  name="PersonasSegNombre">
+                    {!!Form::label('PersonasPrimNombre','Primer nombre')!!}
+                    {!!Form::text('PersonasPrimNombre',null,['class'=>'form-control'])!!}
+                    {!!Form::label('PersonasSegNombre','Segundo nombre')!!}
+                    {!!Form::text('PersonasSegNombre',null,['class'=>'form-control'])!!}
                 </div>
             </div>
     </div>
     <div class="navbar navbar-expand-lg navbar-white bg-white m-2 p-4 d-flex justify-content-center">
         <div class="row">
             <div class="col-6">
-                <label class="text-dark" for="">Tipo de documento</label>
-                <input class="form-control" type="list"  name="PersonasTipoDoc">
-                <label class="text-dark" for="">Documento</label>
-                <input class="form-control" type="text" name="PersonasDocumento">
+                {!!Form::label('PersonasTipoDoc','Tipo de documento')!!}
+                {!!Form::text('PersonasTipoDoc','CC',['class'=>'form-control', ])!!}
+                {!!Form::label('PersonasDocumento', 'Documento')!!}
+                {!!Form::text('PersonasDocumento', null, ['class'=>'form-control'])!!}
             </div>
             <div class="col-6">
-                <label class="text-dark" for="">Telefono</label>
-                <input class="form-control" type="text" name="PersonasTel">
-                <label class="text-dark" for="">Fecha de ingreso</label>
-                <input class="form-control" type="date "name="PersonasFechaIngreso">
+                {!!Form::label('PersonasTel','Número de telefono')!!}
+                {!!Form::number('PersonasTel',null,['class'=>'form-control'])!!}
+                {!!Form::label('PersonasFechaIngreso', 'Fecha de ingreso')!!}
+                {!!Form::date('PersonasFechaIngreso',\Carbon\Carbon::now(),['class'=>'form-control'])!!}
             </div>
         </div>
     </div>
     <div class="navbar navbar-expand-lg navbar-white bg-white m-2 p-4 d-flex justify-content-center">
             <div class="row">
                 <div class="col-6">
-                    <label class="text-dark" for="">Titulo</label>
-                    <input class="form-control" type="list"  name="PersonasTitulo">
+                    {!!Form::label('PersonasTitulo','Titulo')!!}
+                    {!!Form::text('PersonasTitulo',null,['class'=>'form-control'])!!}
                     
                 </div>
                 <div class="col-6">
-                    <label class="text-dark" for="">Especializacion</label>
-                    <input class="form-control" type="text" name="PersonasEspecialidad">
+                    {!!Form::label('PersonasEspecialidad','Especialidad')!!}
+                    {!!Form::text('PersonasEspecialidad',null,['class'=>'form-control'])!!}
                 </div>
-                
             </div>
         </div>
-            
-
         <div class="row ml-5 ">
                 <div class="ml-3 col-11 d-flex justify-content-end">
-                        <button type="button" id="" class="btn btn-info">
-                                <i class="fa fa-check-square"></i>
-                                <span>Agregar</span>
-                            </button>
+                    {!!Form::submit('Agregar',['class'=>'btn btn-info'])!!}
                     
                 </div>
         </div>    
- 
-
+{!!Form::close()!!}
+<!--
 </form>
+-->
 

@@ -5,19 +5,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link href="{{ asset('css/jquery.fancybox.min.css') }}" rel="stylesheet" type="text/css" />
-    <script src="{{ asset('js/jquery.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/jquery.fancybox.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/popper.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/funciones.js') }}" type="text/javascript"></script>
-    <link href="{{ asset('css/estilo.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('css/pagination.css') }}" rel="stylesheet" type="text/css" />
-    <script src="{{ asset('js/sweetalert2.all.min.js') }}" type="text/javascript"></script>
-<script src="{{asset('js/Chart.bundle.min.js')}}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <!--SCRIPTS -->
+    {!!Html::script('js/jquery.min.js')!!}
+    {!!Html::script('js/jquery.fancybox.min.js')!!}
+    {!!Html::script('js/popper.min.js')!!}
+    {!!Html::script('js/bootstrap.min.js')!!}
+    {!!Html::script('js/funciones.js')!!}
+    {!!Html::script('js/sweetalert2.all.min.js')!!}
+    {!!Html::script('js/Chart.bundle.min.js')!!}
+    
+    <!--STYLES-->
+    {!!Html::style('css/estilo.css')!!}
+    {!!Html::style('css/bootstrap.min.css')!!}
+    {!!Html::style('css/pagination.css')!!}
+    {!!Html::style('css/jquery.fancybox.min.css')!!}
+    
 
     <title>Admin Assist</title>
 
@@ -154,6 +157,8 @@
                     @include('contenido.recursos.insertarRecursos')
                 @elseif(Request::is('recursos/showResource/*'))
                     @include('contenido.recursos.mostrarPersona');
+                @elseif(Request::is('recursos/agrHabilRec'))
+                    @include('contenido.recursos.agr')
 
                 @else
                     @include('contenido.principal')

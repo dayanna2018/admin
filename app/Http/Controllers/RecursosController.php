@@ -120,9 +120,51 @@ class RecursosController extends Controller
             'PersonasEspecialidad' => 'required|string|min:6'
         ]);
     }
-    public function addingResource(){
-        return 'Created!';
+    public function addingResource(Request $request){
+        
+        //VALIDAMOS SI EL SEGUNDO NOMBRE ESTA VACIO
+        if($request['PersonasSegNombre']===null){
+            $PersonasNombreCompleto = $request['PersonasPriApellido'].' '.$request['PersonasSegApellido'].' '.$request['PersonasPrimNombre'];
+        }else{
+            $PersonasNombreCompleto = $request['PersonasPriApellido'].' '.$request['PersonasSegApellido'].' '.$request['PersonasPrimNombre'].' '.$request['PersonasSegNombre'];
+        }
+         //CONVERTIMOS LOS DATOS A MAYUSCULAS
+            $PersonasPriApellido = strtoupper($request['PersonasPriApellido']);
+            $PersonasSegApellido = strtoupper($request['PersonasSegApellido']);
+            $PersonasPrimNombre = strtoupper($request['PersonasPrimNombre']);
+            $PersonasSegNombre = strtoupper($request['PersonasSegNombre']);
+            $PersonasTipoDoc = strtoupper($request['PersonasTipoDoc']);
+            $PersonasDocumento = $request['PersonasDocumento'];
+            $PersonasTel = $request['PersonasTel'];
+            $PersonasFechaIngreso = $request['PersonasFechaIngreso'];
+            $PersonasTitulo = strtoupper($request['PersonasTitulo']);
+            $PersonasEspecialidad = strtoupper($request['PersonasEspecialidad']);
+            $PersonasNombreCompleto = strtoupper($PersonasNombreCompleto);
+
+            $id = DB::table('personas')->insertGetId([
+                'PersonasNombreCompleto'=> $PersonasNombreCompleto,
+                'PersonasPriApellido' => $request['PersonasPriApellido'],
+                'PersonasSegApellido' => $request['PersonasSegApellido'],
+                'PersonasPrimNombre' => $request['PersonasPrimNombre'],
+                'PersonasSegNombre' => $request['PersonasSegNombre'],
+                'PersonasTipoDoc' => $request['PersonasTipoDoc'],
+                'PersonasDocumento' => $request['PersonasDocumento'],
+                'PersonasTel' => $request['PersonasTel'],
+                'PersonasFechaIngreso' => $request['PersonasFechaIngreso'],
+                'PersonasTitulo' => $request['PersonasTitulo'],
+                'PersonasEspecialidad' => $request['PersonasEspecialidad'],
+                ]);
+
+        return $id; 
+        
+
+
     }
+
+    //Fucnion para agregar las habilidades de los recursos
+
+
+    //agrHabilRec
 
     /**
      * Create a new user instance after a valid registration.

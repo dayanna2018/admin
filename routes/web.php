@@ -47,4 +47,7 @@ Route::get('/admin/cargos','CargosController@show')->name('mostrarCargos');
 Route::get('/recursos/agregar','RecursosController@addResource')->name('addRecurso');
 Route::post('/recursos/agregar/new','RecursosController@addingResource')->name('addingRecurso');
 Route::get('/recursos/showResource/{PersonasID}','RecursosController@showResource')->name('showResourceController');
-//Corregidos variso errores
+
+Route::get('recursos/agrHabilRec/{id}', 'PersHabilController@mostrarHabil')->name('mostrarHabil');
+
+
