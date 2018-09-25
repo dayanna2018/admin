@@ -15,9 +15,12 @@ class PersHabilController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(int $id)
     {
-        //
+        $name =ucwords(DB::table('personas')->where('PersonasID', $id)->value('PersonasNombreCompleto'));
+        $habilidades = DB::table('habilidades')->orderBy('HabilidadesNombre','asc')->get();
+        return view('home',['name'=>$name, 'id'=>$id,'habilidades'=>$habilidades]);
+
     }
 
     /**
@@ -25,9 +28,11 @@ class PersHabilController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //
+        return $request;
+
     }
 
     /**
@@ -39,6 +44,7 @@ class PersHabilController extends Controller
     public function store(Request $request)
     {
         //
+
     }
 
     /**

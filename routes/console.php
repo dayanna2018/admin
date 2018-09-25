@@ -19,7 +19,7 @@ Artisan::command('inspire', function () {
 
 //$professions = DB::select('SELECT id FROM profesiones WHERE title= ? LIMIT 0,1', ["Desarrollador Backend"]);
 
-$profesion = DB::table('professions')->select('id')->first();
+/*$profesion = DB::table('professions')->select('id')->first();
 
 DB::table('users')->insert([
     'name' => 'Nombre 1',
@@ -27,3 +27,4 @@ DB::table('users')->insert([
     'password' => bcrypt('laravel'),
     'profession_id' => $profession->first()->id
 ]);
+*/

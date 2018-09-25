@@ -48,6 +48,7 @@ Route::get('/recursos/agregar','RecursosController@addResource')->name('addRecur
 Route::post('/recursos/agregar/new','RecursosController@addingResource')->name('addingRecurso');
 Route::get('/recursos/showResource/{PersonasID}','RecursosController@showResource')->name('showResourceController');
 
-Route::get('recursos/agrHabilRec/{id}', 'PersHabilController@mostrarHabil')->name('mostrarHabil');
+Route::get('recursos/agrHabilRec/{id}', 'PersHabilController@index')->name('addHabil.index');
+Route::post('persHabil/add', 'PersHabilController@create')->name('PersHabil.create');
 
 

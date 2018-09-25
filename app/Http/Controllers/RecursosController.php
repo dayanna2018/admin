@@ -30,7 +30,7 @@ class RecursosController extends Controller
         $users = DB::table('personas')
         ->leftjoin('cargpers','personas.PersonasID','=','cargpers.Personas_PersonasID')
         ->leftjoin('cargos','CargosID', '=', 'Cargos_CargosID')
-        ->where('PersonasActivo', '=', 'ACTIVO')->paginate(50);
+        ->where('PersonasActivo', '=', 'ACTIVO')->paginate(100);
         
         return view('home', ['users' => $users, 'contPers' =>$users->count()]);
 
@@ -135,7 +135,7 @@ class RecursosController extends Controller
             $PersonasSegNombre = strtoupper($request['PersonasSegNombre']);
             $PersonasTipoDoc = strtoupper($request['PersonasTipoDoc']);
             $PersonasDocumento = $request['PersonasDocumento'];
-            $PersonasTel = $request['PersonasTel'];
+            $PersonasTel = $request['PersonasTel']; 
             $PersonasFechaIngreso = $request['PersonasFechaIngreso'];
             $PersonasTitulo = strtoupper($request['PersonasTitulo']);
             $PersonasEspecialidad = strtoupper($request['PersonasEspecialidad']);
@@ -143,19 +143,20 @@ class RecursosController extends Controller
 
             $id = DB::table('personas')->insertGetId([
                 'PersonasNombreCompleto'=> $PersonasNombreCompleto,
-                'PersonasPriApellido' => $request['PersonasPriApellido'],
-                'PersonasSegApellido' => $request['PersonasSegApellido'],
-                'PersonasPrimNombre' => $request['PersonasPrimNombre'],
-                'PersonasSegNombre' => $request['PersonasSegNombre'],
-                'PersonasTipoDoc' => $request['PersonasTipoDoc'],
-                'PersonasDocumento' => $request['PersonasDocumento'],
-                'PersonasTel' => $request['PersonasTel'],
-                'PersonasFechaIngreso' => $request['PersonasFechaIngreso'],
-                'PersonasTitulo' => $request['PersonasTitulo'],
-                'PersonasEspecialidad' => $request['PersonasEspecialidad'],
+                'PersonasPriApellido' => $PersonasPriApellido,
+                'PersonasSegApellido' => $PersonasSegApellido,
+                'PersonasPrimNombre' => $PersonasPrimNombre,
+                'PersonasSegNombre' => $PersonasSegNombre,
+                'PersonasTipoDoc' => $PersonasTipoDoc,
+                'PersonasDocumento' => $PersonasDocumento,
+                'PersonasTel' => $PersonasTel,
+                'PersonasFechaIngreso' => $PersonasFechaIngreso,
+                'PersonasTitulo' => $PersonasTitulo,
+                'PersonasEspecialidad' => $PersonasEspecialidad,
                 ]);
 
-        return $id; 
+        return Redirect()->route('addHabil.index',[$id]); 
+
         
 
 

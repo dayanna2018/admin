@@ -159,6 +159,8 @@
                     @include('contenido.recursos.mostrarPersona');
                 @elseif(Request::is('recursos/agrHabilRec'))
                     @include('contenido.recursos.agr')
+                @elseif(request::is('recursos/agrHabilRec/*'))
+                    @include('contenido.recursos.agrHabilRec')
 
                 @else
                     @include('contenido.principal')

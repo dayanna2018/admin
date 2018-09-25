@@ -53,8 +53,10 @@
                     
                 </div>
         </div>    
-{!!Form::close()!!}
+{!!Form::close()!!} 
 <!--
 </form>
+
+p
 -->
 
