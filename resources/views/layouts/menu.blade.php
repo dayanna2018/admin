@@ -106,7 +106,21 @@
                         </li>
                     </ul>
                 </li>
-
+                <li><a href="">recfisofc</a></li>
+                <li><a href="">oficina</a></li>
+                <li><a href="">recursosfisicos</a></li>
+                <li><a href="">persnoved</a></li>
+                <li><a href="">novedades</a></li>
+                <li><a href="">perscontr</a></li>
+                <li><a href="">contratos</a></li>
+                <li><a href="">pershabil</a></li>
+                <li><a href="">asignacion</a></li>
+                <li><a href="">proyecto</a></li>
+                <li><a href="">factproyecto</a></li>
+                <li><a href="">proylinneg</a></li>
+                <li><a href="">lineanegocio</a></li>
+                <li><a href="">gerenproyec</a></li>
+                <li><a href="">gerente</a></li>
             </ul>
 
 

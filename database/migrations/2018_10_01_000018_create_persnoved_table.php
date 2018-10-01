@@ -24,15 +24,16 @@ class CreatePersnovedTable extends Migration
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('PersNovedID');
-            $table->unsignedInteger('Personas_PersonasID')->unsigned();
             $table->unsignedInteger('Novedades_NovId')->unsigned();
+            $table->unsignedInteger('personas_PersonasID')->unsigned();
             $table->date('PersNovedFechaInicio')->nullable()->default(null);
             $table->date('PersNovedFechaFin')->nullable()->default(null);
             $table->dateTime('PersNoved_created_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->dateTime('PersNoved_updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->tinyInteger('PersNovedEstado')->nullable()->default('1');
+            $table->string('PersNovedUsuario', 45)->nullable();
 
-            $table->index(["Personas_PersonasID"], 'fk_Personas_has_Novedades_Personas1_idx');
+            $table->index(["personas_PersonasID"], 'fk_persnoved_personas1_idx');
 
             $table->index(["Novedades_NovId"], 'fk_Personas_has_Novedades_Novedades1_idx');
 
@@ -42,7 +43,7 @@ class CreatePersnovedTable extends Migration
                 ->onDelete('no action')
                 ->onUpdate('no action');
 
-            $table->foreign('Personas_PersonasID', 'fk_Personas_has_Novedades_Personas1_idx')
+            $table->foreign('personas_PersonasID', 'fk_persnoved_personas1_idx')
                 ->references('PersonasID')->on('personas')
                 ->onDelete('no action')
                 ->onUpdate('no action');

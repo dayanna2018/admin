@@ -82,10 +82,8 @@
             <thead>
                 <tr>
                     <th scope="col">NOMBRE</th>
-                    <th scope="col">TELEFONO</th>
-                    <th scope="col">TITULO</th>
-                    <th scope="col">DOCUMENTO</th>
                     <th scope="col">CARGO</th>
+                    <th scope="col">TELEFONO</th>
                     <th scope="col">INGRESO</th>
                     <th scope="col"> </th>
                     <th scope="col"></th>
@@ -97,10 +95,8 @@
                 <tr>
                         
                 <td style="font-size: 12px"><a href="{{url("/recursos/showResource/{$user->PersonasID}")}}"> {{$user->PersonasNombreCompleto}} </a></td>
+                <td style="font-size: 12px">{{ $user->CargosNombre }} </td>
                                 <td style="font-size: 12px">{{ $user->PersonasTel }}</td>
-                                <td style="font-size: 12px">{{ $user->PersonasTitulo }} </td>
-                                <td style="font-size: 12px">{{ $user->PersonasDocumento }} </td>
-                                <td style="font-size: 12px">{{ $user->CargosNombre }} </td>
                                 <td style="font-size: 12px">{{ $user->PersonasFechaIngreso }} </td>
                                 <td style="font-size: 12px">
                                         <div class="btn btn-sm btn-info" userIdUpdate="{{ $user->PersonasID }}"><i class="far fa-edit"></i>

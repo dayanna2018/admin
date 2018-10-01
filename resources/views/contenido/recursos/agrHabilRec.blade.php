@@ -17,9 +17,8 @@
 
         <button id="btn2" class="btn btn-info">Agregar habilidad</button>
         {!!Form::submit('Guardar',['class'=>'btn btn-info'])!!}
-        
+        <br>
 
-            
 
 
     <script> 
@@ -28,9 +27,7 @@ $(document).ready(function(){
         $("#contenido2").append('\
         <div class="col-4">\
             {!!Form::label("HabilidadesNombre", "habilidad")!!}\
-        @foreach($habilidades as $habilidad)\
-        @endforeach\
-            {!!Form::select("HabilidadesNombre[]",[$habilidad->HabilidadesNombre],null,["class"=>"form-control"])!!}\
+            {!!Form::select("HabilidadesNombre",["",""],null,["class"=>"form-control"])!!}\
         </div>\
         <div class="col-4">\
         {!!Form::label("PersHabilCertificacion", "Certificación")!!}\

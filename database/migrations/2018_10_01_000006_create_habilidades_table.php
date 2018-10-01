@@ -28,6 +28,7 @@ class CreateHabilidadesTable extends Migration
             $table->string('HabilidadesTipo', 45)->nullable()->default(null);
             $table->dateTime('Habilidades_created_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->dateTime('Habilidades_updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            $table->string('HabilidadesUsuario', 45)->nullable();
             $table->tinyInteger('HabilidadesEstado')->nullable()->default('1');
         });
     }

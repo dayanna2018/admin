@@ -24,17 +24,18 @@ class CreatePershabilTable extends Migration
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('PersHabilID');
-            $table->unsignedInteger('Personas_PersonasID')->unsigned();
             $table->unsignedInteger('Habilidadess_HabilidadesID')->unsigned();
+            $table->unsignedInteger('personas_PersonasID')->unsigned();
             $table->string('PersHabilCertificacion', 45)->nullable()->default('NO');
             $table->string('PersHabilNivExp', 45)->nullable()->default('BAJO');
             $table->dateTime('PersHabil_created_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->dateTime('PersHabil_updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->string('PersHabilUsuario', 45)->nullable();
             $table->tinyInteger('PersHabilEstado')->nullable()->default('1');
 
             $table->index(["Habilidadess_HabilidadesID"], 'fk_Personas_has_Herramientas_Herramientas1_idx');
 
-            $table->index(["Personas_PersonasID"], 'fk_Personas_has_Herramientas_Personas_idx');
+            $table->index(["personas_PersonasID"], 'fk_pershabil_personas1_idx');
 
 
             $table->foreign('Habilidadess_HabilidadesID', 'fk_Personas_has_Herramientas_Herramientas1_idx')
@@ -42,7 +43,7 @@ class CreatePershabilTable extends Migration
                 ->onDelete('no action')
                 ->onUpdate('no action');
 
-            $table->foreign('Personas_PersonasID', 'fk_Personas_has_Herramientas_Personas_idx')
+            $table->foreign('personas_PersonasID', 'fk_pershabil_personas1_idx')
                 ->references('PersonasID')->on('personas')
                 ->onDelete('no action')
                 ->onUpdate('no action');

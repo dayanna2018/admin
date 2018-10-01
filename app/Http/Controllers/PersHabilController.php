@@ -18,7 +18,7 @@ class PersHabilController extends Controller
     public function index(int $id)
     {
         $name =ucwords(DB::table('personas')->where('PersonasID', $id)->value('PersonasNombreCompleto'));
-        $habilidades = DB::table('habilidades')->orderBy('HabilidadesNombre','asc')->get();
+        $habilidades = DB::table('habilidades')->select(['HabilidadesID','HabilidadesNombre']);
         return view('home',['name'=>$name, 'id'=>$id,'habilidades'=>$habilidades]);
 
     }
