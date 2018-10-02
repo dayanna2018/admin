@@ -32,7 +32,7 @@ class CreateRecfisofcTable extends Migration
             $table->text('RecFisOfcObs')->nullable()->default(null);
             $table->timestamp('RecFisOfc_created_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('RecFisOfc_updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
-            $table->string('RecFisOfcUsuario', 45)->nullable();
+            $table->string('RecFisOfcUsuario', 45)->nullable()->default(null);
             $table->tinyInteger('RecFisOfc_estado')->nullable()->default('1');
 
             $table->index(["oficina_idOfic"], 'fk_recfisofc_oficina1_idx');

@@ -10,11 +10,11 @@ class CreateProylinnegTable extends Migration
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'proyLinNeg';
+    public $set_schema_table = 'proylinneg';
 
     /**
      * Run the migrations.
-     * @table proyLinNeg
+     * @table proylinneg
      *
      * @return void
      */
@@ -29,12 +29,12 @@ class CreateProylinnegTable extends Migration
             $table->string('proyLinNegTipo', 45)->nullable()->default(null);
             $table->timestamp('proyLinNeg_created_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('proyLinNeg_updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
-            $table->string('proyLinNeg_Usuario', 45)->nullable();
+            $table->string('proyLinNeg_Usuario', 45)->nullable()->default(null);
             $table->tinyInteger('proyLinNegEstado')->nullable()->default('1');
 
-            $table->index(["proyecto_ProyID"], 'fk_proyLinNeg_proyecto1_idx');
-
             $table->index(["lineanegocio_linNegID"], 'fk_proyLinNeg_lineanegocio1_idx');
+
+            $table->index(["proyecto_ProyID"], 'fk_proyLinNeg_proyecto1_idx');
 
 
             $table->foreign('lineanegocio_linNegID', 'fk_proyLinNeg_lineanegocio1_idx')

@@ -25,13 +25,15 @@ class CreateProyectoTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('ProyID');
             $table->unsignedInteger('cliente_cliID')->unsigned();
+            $table->string('ProyectoNombre', 45)->nullable();
             $table->date('ProyFechaIni')->nullable()->default(null);
-            $table->string('ProyectoFechaFin', 45)->nullable()->default(null);
+            $table->date('ProyectoFechaFin')->nullable()->default(null);
             $table->decimal('ProyectoPresupuesto', 8, 2)->nullable()->default(null);
             $table->timestamp('Proyecto_created_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('Proyecto_updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
-            $table->string('Proyecto_Usuario', 45)->nullable();
+            $table->string('Proyecto_Usuario', 45)->nullable()->default(null);
             $table->tinyInteger('ProyectoEstado')->nullable()->default(null);
+            $table->longText('ProyectoDescripcion')->nullable();
 
             $table->index(["cliente_cliID"], 'fk_Proyecto_cliente1_idx');
 

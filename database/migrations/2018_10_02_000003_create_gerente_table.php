@@ -24,12 +24,12 @@ class CreateGerenteTable extends Migration
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('GerenteID');
-            $table->string('GerenteNombre', 45)->nullable();
+            $table->string('GerenteNombre', 45)->nullable()->default(null);
             $table->date('GerenteFechaInicio')->nullable()->default(null);
             $table->date('GerenteFechaFin')->nullable()->default(null);
             $table->timestamp('Gerente_created_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('Gerente_updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
-            $table->string('Gerente_Usuario', 45)->nullable();
+            $table->string('Gerente_Usuario', 45)->nullable()->default(null);
             $table->tinyInteger('Gerente_estado')->nullable()->default('1');
         });
     }

@@ -39,7 +39,7 @@ class CreatePersonasTable extends Migration
             $table->date('PersonasFechaRetiro')->nullable()->default(null);
             $table->dateTime('Personas_created_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->dateTime('Personas_updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
-            $table->string('PersonasUsuario', 45)->nullable();
+            $table->string('PersonasUsuario', 45)->nullable()->default(null);
             $table->tinyInteger('PersonasEstado')->nullable()->default('1');
         });
     }

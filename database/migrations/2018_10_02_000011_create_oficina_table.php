@@ -27,7 +27,7 @@ class CreateOficinaTable extends Migration
             $table->string('OficNumero', 45)->nullable()->default(null);
             $table->timestamp('Ofic_updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('Ofic_created_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
-            $table->string('Ofic_usuario', 45)->nullable();
+            $table->string('Ofic_usuario', 45)->nullable()->default(null);
             $table->tinyInteger('Ofic_estado')->nullable()->default('1');
         });
     }

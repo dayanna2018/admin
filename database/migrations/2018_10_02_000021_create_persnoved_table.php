@@ -31,7 +31,7 @@ class CreatePersnovedTable extends Migration
             $table->dateTime('PersNoved_created_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->dateTime('PersNoved_updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->tinyInteger('PersNovedEstado')->nullable()->default('1');
-            $table->string('PersNovedUsuario', 45)->nullable();
+            $table->string('PersNovedUsuario', 45)->nullable()->default(null);
 
             $table->index(["personas_PersonasID"], 'fk_persnoved_personas1_idx');
 

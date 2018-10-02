@@ -27,13 +27,14 @@ class CreateAsignacionTable extends Migration
             $table->unsignedInteger('personas_PersonasID')->unsigned();
             $table->unsignedInteger('proyecto_ProyID')->unsigned();
             $table->date('asigFechaIni')->nullable()->default(null);
-            $table->tinyInteger('asigEstado')->nullable()->default('1');
+            $table->integer('asigPorcentaje')->nullable()->default('1');
             $table->string('asigFechaFin', 45)->nullable()->default(null);
             $table->string('asignacionUbicacion', 45)->nullable()->default(null);
             $table->timestamp('asig_created_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('asig_updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
-            $table->string('asig_Usuario', 45)->nullable();
+            $table->string('asig_Usuario', 45)->nullable()->default(null);
             $table->tinyInteger('asig_estado')->nullable()->default('1');
+            $table->date('asigFecha')->nullable();
 
             $table->index(["proyecto_ProyID"], 'fk_asignacion_proyecto1_idx');
 

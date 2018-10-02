@@ -30,7 +30,7 @@ class CreateGerenproyecTable extends Migration
             $table->date('GerenProyecFechaFin')->nullable()->default(null);
             $table->timestamp('GerenProyec_created_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('GerenProyec_updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
-            $table->string('GerenProyec_Usuario', 45)->nullable();
+            $table->string('GerenProyec_Usuario', 45)->nullable()->default(null);
             $table->tinyInteger('GerenProyec_Estado')->nullable()->default('1');
 
             $table->index(["Proyecto_ProyID"], 'fk_GerenProyec_Proyecto1_idx');

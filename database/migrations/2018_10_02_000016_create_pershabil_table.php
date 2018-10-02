@@ -30,7 +30,7 @@ class CreatePershabilTable extends Migration
             $table->string('PersHabilNivExp', 45)->nullable()->default('BAJO');
             $table->dateTime('PersHabil_created_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->dateTime('PersHabil_updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->string('PersHabilUsuario', 45)->nullable();
+            $table->string('PersHabilUsuario', 45)->nullable()->default(null);
             $table->tinyInteger('PersHabilEstado')->nullable()->default('1');
 
             $table->index(["Habilidadess_HabilidadesID"], 'fk_Personas_has_Herramientas_Herramientas1_idx');

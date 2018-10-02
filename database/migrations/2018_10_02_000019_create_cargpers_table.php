@@ -23,14 +23,14 @@ class CreateCargpersTable extends Migration
         if (Schema::hasTable($this->set_schema_table)) return;
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('CargPersID')->unsigned();
+            $table->increments('CargPersID');
             $table->unsignedInteger('cargos_CargosID')->unsigned();
             $table->unsignedInteger('personas_PersonasID')->unsigned();
             $table->date('CargPersFechaInicio')->nullable()->default(null);
             $table->date('CargPersFechaFin')->nullable()->default(null);
             $table->date('CargPersPruebaInicio')->nullable()->default(null);
             $table->date('CargPersPruebaFin')->nullable()->default(null);
-            $table->string('CargPersUsuario', 45)->nullable();
+            $table->string('CargPersUsuario', 45)->nullable()->default(null);
             $table->dateTime('CargPers_created_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->dateTime('CargPers_updated_at')->nullable()->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->tinyInteger('CargPersEstado')->nullable()->default('1');
